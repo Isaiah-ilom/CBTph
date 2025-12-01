@@ -1,4 +1,3 @@
-
 <?php require_once("inc/header.php"); ?>
 
 <div id="app">
@@ -21,11 +20,11 @@
                                     <center>
                                         <?php
                                         $query = "SELECT * FROM students WHERE reg_no = '{$reg_no}' LIMIT 1";
-                                        $select_user_query = mysqli_query($connection, $query);
+                                        $select_user_query = $connection->query($query);
                                         if(!$select_user_query){
-                                            die("QUERY FAILED". mysqli_error($connection));
+                                            die("QUERY FAILED");
                                         }
-                                        while($row = mysqli_fetch_array($select_user_query)){
+                                        while($row = $select_user_query->fetch_array()){
                                         $first_name = $row['first_name'];
                                         $last_name = $row['last_name'];
                                         $name = $first_name . ' '. $last_name;
@@ -49,10 +48,10 @@
                                         <span><strong>Subjects: </strong></span>
                                         <?php
                                         $query = "SELECT * FROM registered_exams WHERE student_reg = '{$reg_no}'";
-                                        $select_user_query = mysqli_query($connection, $query);
+                                        $select_user_query = $connection->query($query);
 
                                         if(!$select_user_query){
-                                            die("QUERY FAILED". mysqli_error($connection));
+                                            die("QUERY FAILED");
                                         }
 
                                         if($select_user_query->num_rows < 1){
@@ -61,7 +60,7 @@
                                     <a class="btn btn-success" href="registered_exams">Add Subjects</a></p>';
                                         } else {
 
-                                            while($row = mysqli_fetch_array($select_user_query)){
+                                            while($row = $select_user_query->fetch_array()){
 
                                                 $subject_id = $row['subject_id'];
                                                 ?>

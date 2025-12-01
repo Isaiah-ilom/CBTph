@@ -84,10 +84,10 @@
                                                 <?php
 
 
-                                                $query = "SELECT * FROM subjects WHERE code = 'ENG'";
-                                                $select_course_query = mysqli_query($connection, $query);
+                                                $query = "SELECT * FROM subjects WHERE subject_code = 'ENG'";
+                                                $select_course_query = $connection->query($query);
 
-                                                $row2 = mysqli_fetch_array($select_course_query);
+                                                $row2 = $select_course_query ? $select_course_query->fetch_array() : null;
 
                                                 $subject1 = $row2['name'];
                                                 $subject1_id = $row2['id'];
@@ -106,8 +106,8 @@
                                     <?php
 
 
-                                    $query = "SELECT * FROM subjects WHERE code != 'ENG' ORDER BY rand()";
-                                    $select_course_query = mysqli_query($connection, $query);
+                                    $query = "SELECT * FROM subjects WHERE subject_code != 'ENG' ORDER BY RANDOM()";
+                                    $select_course_query = $connection->query($query);
 
                                     ?>
 
@@ -118,10 +118,10 @@
                                         <select required class="form-control" name="subject2" id="">
                                             <?php
                                             if(!$select_course_query){
-                                                die("QUERY FAILED". mysqli_error($connection));
+                                                die("QUERY FAILED");
                                             }
 
-                                            while($row = mysqli_fetch_array($select_course_query)) {
+                                            while($row = $select_course_query->fetch_array()) {
 
                                                 ?>
 
@@ -135,8 +135,8 @@
                                     <?php
 
 
-                                    $query = "SELECT * FROM subjects WHERE code != 'ENG' ORDER BY rand()";
-                                    $select_course_query = mysqli_query($connection, $query);
+                                    $query = "SELECT * FROM subjects WHERE subject_code != 'ENG' ORDER BY RANDOM()";
+                                    $select_course_query = $connection->query($query);
 
                                     ?>
 
@@ -145,10 +145,10 @@
                                         <select required class="form-control" name="subject3" id="subject3">
                                             <?php
                                             if(!$select_course_query){
-                                                die("QUERY FAILED". mysqli_error($connection));
+                                                die("QUERY FAILED");
                                             }
 
-                                            while($row = mysqli_fetch_array($select_course_query)) {
+                                            while($row = $select_course_query->fetch_array()) {
 
                                                 ?>
 
@@ -163,8 +163,8 @@
                                     <?php
 
 
-                                    $query = "SELECT * FROM subjects WHERE code != 'ENG' ORDER BY rand()";
-                                    $select_course_query = mysqli_query($connection, $query);
+                                    $query = "SELECT * FROM subjects WHERE subject_code != 'ENG' ORDER BY RANDOM()";
+                                    $select_course_query = $connection->query($query);
 
                                     ?>
 
@@ -173,10 +173,10 @@
                                         <select required class="form-control" name="subject4" id="">
                                             <?php
                                             if(!$select_course_query){
-                                                die("QUERY FAILED". mysqli_error($connection));
+                                                die("QUERY FAILED");
                                             }
 
-                                            while($row = mysqli_fetch_array($select_course_query)) {
+                                            while($row = $select_course_query->fetch_array()) {
 
                                                 ?>
 
